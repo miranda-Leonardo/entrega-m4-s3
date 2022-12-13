@@ -4,7 +4,7 @@ const createCategoryService = async (data) => {
   const response = await database.query(
     `INSERT INTO
         categories (name)
-    Values
+    VALUES
         ($1)
     RETURNING *;`,
     [data.name]

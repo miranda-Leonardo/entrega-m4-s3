@@ -8,13 +8,13 @@ import {
 } from "../controllers/categories.controllers";
 import { categoryDataValidateMiddleware } from "../middlewares/categories/categoryDataValidate.middleware";
 import { categoryExistsMiddleware } from "../middlewares/categories/categoryExists.middleware";
-import { createCategorySchema } from "../serializers/createCategory.serializer";
+import { createCategorySerializer } from "../serializers/createCategory.serializer";
 
 const categoriesRoutes = Router();
 
 categoriesRoutes.post(
   "",
-  categoryDataValidateMiddleware(createCategorySchema),
+  categoryDataValidateMiddleware(createCategorySerializer),
   categoryExistsMiddleware,
   createCategoryController
 );
@@ -22,7 +22,7 @@ categoriesRoutes.get("", getAllCategoriesController);
 categoriesRoutes.get("/:id", getCategoryController);
 categoriesRoutes.patch(
   "/:id",
-  categoryDataValidateMiddleware(createCategorySchema),
+  categoryDataValidateMiddleware(createCategorySerializer),
   updateCategoryController
 );
 categoriesRoutes.delete("/:id", deleteCategoryController);

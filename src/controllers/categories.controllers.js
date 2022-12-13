@@ -1,4 +1,3 @@
-import { response } from "express";
 import { createCategoryService } from "../services/categories/createCategory.service";
 import { deleteCategoryService } from "../services/categories/deleteCategory.service";
 import { getAllCategoriesService } from "../services/categories/getAllCategories.service";
@@ -27,13 +26,13 @@ const updateCategoryController = async (req, res) => {
 
 const deleteCategoryController = async (req, res) => {
   const category = await deleteCategoryService(req.params.id);
-  return res.status(200).json(category)
-}
+  return res.status(200).json(category);
+};
 
 export {
   createCategoryController,
   getAllCategoriesController,
   getCategoryController,
   updateCategoryController,
-  deleteCategoryController
+  deleteCategoryController,
 };
