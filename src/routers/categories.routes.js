@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createCategoryController,
+  deleteCategoryController,
   getAllCategoriesController,
   getCategoryController,
   updateCategoryController,
@@ -24,5 +25,6 @@ categoriesRoutes.patch(
   categoryDataValidateMiddleware(createCategorySchema),
   updateCategoryController
 );
+categoriesRoutes.delete("/:id", deleteCategoryController);
 
 export { categoriesRoutes };
