@@ -1,6 +1,7 @@
 import { createCategoryService } from "../services/categories/createCategory.service";
 import { getAllCategoriesService } from "../services/categories/getAllCategories.service";
 import { getCategoryService } from "../services/categories/getCategory.service";
+import { updateCategoryService } from "../services/categories/updateCategory.service";
 
 const createCategoryController = async (req, res) => {
   const category = await createCategoryService(req.body);
@@ -9,16 +10,22 @@ const createCategoryController = async (req, res) => {
 
 const getAllCategoriesController = async (req, res) => {
   const categories = await getAllCategoriesService();
-  return res.status(201).json(categories);
+  return res.status(200).json(categories);
 };
 
 const getCategoryController = async (req, res) => {
   const category = await getCategoryService(req.params.id);
-  return res.status(201).json(category);
+  return res.status(200).json(category);
+};
+
+const updateCategoryController = async (req, res) => {
+  const category = await updateCategoryService(req.params.id, req.body);
+  return res.status(200).json(category);
 };
 
 export {
   createCategoryController,
   getAllCategoriesController,
   getCategoryController,
+  updateCategoryController,
 };
