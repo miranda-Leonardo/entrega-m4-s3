@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   createProductController,
   deleteProductController,
+  getAllProductsByCategoryController,
   getAllProductsController,
   getProductController,
   updateProductController,
@@ -20,5 +21,6 @@ productsRoutes.get("", getAllProductsController);
 productsRoutes.get("/:id", getProductController);
 productsRoutes.patch("/:id", updateProductController);
 productsRoutes.delete("/:id", deleteProductController);
+productsRoutes.get("/category/:id", getAllProductsByCategoryController);
 
 export { productsRoutes };
