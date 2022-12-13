@@ -1,4 +1,5 @@
 import { createProductService } from "../services/products/createProduct.service";
+import { deleteProductService } from "../services/products/deleteProduct.service";
 import { getAllProductsService } from "../services/products/getAllProducts.service";
 import { getProductService } from "../services/products/getProduct.service";
 import { updateProductService } from "../services/products/updateProduct.service";
@@ -23,9 +24,15 @@ const updateProductController = async (req, res) => {
   return res.status(200).json(product);
 };
 
+const deleteProductController = async (req, res) => {
+  const product = await deleteProductService(req.params.id);
+  return res.status(200).json(product);
+};
+
 export {
   createProductController,
   getAllProductsController,
   getProductController,
   updateProductController,
+  deleteProductController,
 };

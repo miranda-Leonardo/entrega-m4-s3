@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createProductController,
+  deleteProductController,
   getAllProductsController,
   getProductController,
   updateProductController,
@@ -15,9 +16,9 @@ productsRoutes.post(
   productDataValidateMiddleware(createProductSerializer),
   createProductController
 );
-
 productsRoutes.get("", getAllProductsController);
 productsRoutes.get("/:id", getProductController);
 productsRoutes.patch("/:id", updateProductController);
+productsRoutes.delete("/:id", deleteProductController);
 
 export { productsRoutes };
