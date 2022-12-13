@@ -1,11 +1,11 @@
 import database from "../../database";
 
-const getCategoryService = async (id) => {
+const getProductService = async (id) => {
   const response = await database.query(
-    `SELECT 
+    `SELECT
         *
     FROM
-        categories
+        products
     WHERE
         id = $1;`,
     [id]
@@ -14,4 +14,4 @@ const getCategoryService = async (id) => {
   return response.rows[0];
 };
 
-export { getCategoryService };
+export { getProductService };

@@ -1,5 +1,6 @@
 import { createProductService } from "../services/products/createProduct.service";
 import { getAllProductsService } from "../services/products/getAllProducts.service";
+import { getProductService } from "../services/products/getProduct.service";
 
 const createProductController = async (req, res) => {
   const product = await createProductService(req.body);
@@ -11,4 +12,13 @@ const getAllProductsController = async (req, res) => {
   return res.status(200).json(products);
 };
 
-export { createProductController, getAllProductsController };
+const getProductController = async (req, res) => {
+  const product = await getProductService(req.params.id);
+  return res.status(200).json(product);
+};
+
+export {
+  createProductController,
+  getAllProductsController,
+  getProductController,
+};
