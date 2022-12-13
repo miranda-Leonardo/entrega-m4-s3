@@ -1,7 +1,10 @@
-import express from "express"
+import express from "express";
+import { categoriesRoutes } from "./routers/categories.routes";
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-export default app
+app.use("/categories", categoriesRoutes);
+
+export default app;
