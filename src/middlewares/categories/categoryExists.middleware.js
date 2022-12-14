@@ -2,25 +2,21 @@ import database from "../../database";
 import { AppError } from "../../errors/appError";
 
 const categoryExistsMiddleware = async (req, res, next) => {
-  try {
-    const categoryExists = await database.query(
-      `SELECT 
+  const categoryExists = await database.query(
+    `SELECT 
           *
         FROM
           categories
         WHERE
-          name = $1`,
-      [req.body.name]
-    );
+          id = $1`,
+    [req.params.id]
+  );
 
-    if (categoryExists.rowCount > 0) {
-      throw new AppError("This category already exists!", 409);
-    }
-
-    return next();
-  } catch (err) {
-    return res.status(err.statusCode).json(err.message);
+  if (categoryExists.rowCount < 1) {
+    throw new AppError("This category not exists!", 404);
   }
+
+  return next();
 };
 
 export { categoryExistsMiddleware };

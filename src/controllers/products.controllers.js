@@ -31,7 +31,9 @@ const deleteProductController = async (req, res) => {
 };
 
 const getAllProductsByCategoryController = async (req, res) => {
-  const products = await getAllProductsByCategoryService(req.params.id);
+  const products = await getAllProductsByCategoryService(
+    req.params.category_id
+  );
   return res.status(200).json(products);
 };
 
