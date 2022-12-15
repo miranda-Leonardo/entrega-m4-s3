@@ -8,7 +8,7 @@ const productNotExistsMiddleware = async (req, res, next) => {
         FROM
           products
         WHERE
-          name = $1`,
+          name = $1;`,
     [req.body.name]
   );
 
@@ -16,7 +16,7 @@ const productNotExistsMiddleware = async (req, res, next) => {
     throw new AppError("This product already exists!", 400);
   }
 
-  return next();
+  next();
 };
 
 export { productNotExistsMiddleware };

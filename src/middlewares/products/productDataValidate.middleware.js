@@ -7,10 +7,10 @@ const productDataValidateMiddleware = (schema) => async (req, res, next) => {
 
     req.validateBody = validated;
 
-    return next();
-  } catch (err) {
+    next();
+  } catch (error) {
     return res.status(400).json({
-      message: err.message,
+      message: error.message,
     });
   }
 };

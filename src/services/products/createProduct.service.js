@@ -5,7 +5,8 @@ const createProductService = async ({ name, price, category_id }) => {
     `INSERT INTO products
         (name, price, category_id)
     VALUES
-        ($1, $2, $3);`,
+        ($1, $2, $3)
+    RETURNING *;`,
     [name, price, category_id]
   );
 

@@ -5,8 +5,7 @@ const deleteCategoryService = async (id) => {
     `DELETE FROM
         categories
     WHERE
-        id = $1
-    RETURNING *;`,
+        id = $1;`,
     [id]
   );
 

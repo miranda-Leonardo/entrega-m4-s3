@@ -1,3 +1,4 @@
+import "express-async-errors";
 import express from "express";
 import { handleAppError } from "./middlewares/appError/handleAppError.middleware";
 import { categoriesRoutes } from "./routers/categories.routes";

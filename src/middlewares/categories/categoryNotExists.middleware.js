@@ -4,11 +4,11 @@ import { AppError } from "../../errors/appError";
 const categoryNotExistsMiddleware = async (req, res, next) => {
   const categoryNotExists = await database.query(
     `SELECT 
-          *
-        FROM
-          categories
-        WHERE
-          name = $1`,
+            *
+          FROM
+            categories
+          WHERE
+            name = $1;`,
     [req.body.name]
   );
 
@@ -16,7 +16,7 @@ const categoryNotExistsMiddleware = async (req, res, next) => {
     throw new AppError("This category already exists!", 400);
   }
 
-  return next();
+  next();
 };
 
 export { categoryNotExistsMiddleware };

@@ -5,12 +5,12 @@ const categoryDataValidateMiddleware = (schema) => async (req, res, next) => {
       abortEarly: false,
     });
 
-    req.validateBody = validated;
+    req.validatedBody = validated;
 
-    return next();
-  } catch (err) {
+    next();
+  } catch (error) {
     return res.status(400).json({
-      message: err.message,
+      message: error.message,
     });
   }
 };
